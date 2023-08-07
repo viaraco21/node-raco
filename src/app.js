@@ -1,8 +1,17 @@
 import express from "express";
+import db from "./config/dbConnect.js" //Chama a conexão - importa arquivo de conexão para poder conectar
+
+//cria conexão
+db.on("error", console.log.bind(console, 'Erro de conexão'))
+db.once("open", () => {
+   console.log('conexão com o banco feita com sucesso') 
+}) 
+
 
 const app = express();
 
-//que é um recurso do Express que vai conseguir fazer interpretar o que está chegando via post ou via put e transformar aquilo em um objeto para eu poder armazenar, visualizar e manipular.
+//é um recurso do Express que vai conseguir fazer interpretar o que está chegando via post ou via put
+//e transformar aquilo em um objeto para eu poder armazenar, visualizar e manipular.
 app.use(express.json())
 
 //criação da variavel com dois arrays (constante)
@@ -37,18 +46,20 @@ app.put('/sftp/:id', (req, res) => {
   res.json(sftp);
 })
 
-//Foi introduzido um outro conceito de atribuição via desestruturação que é um recurso interessante do JavaScript que atribui para uma outra variável valores retirados de um array ou de um objeto. Por exemplo, a requisição é um objeto se declarar uma variável Id entre chaves, 
+//Foi introduzido um outro conceito de atribuição via desestruturação que é um recurso interessante do JavaScript.
+//Que atribui para uma outra variável valores retirados de um array ou de um objeto. 
+//Por exemplo, a requisição é um objeto se declarar uma variável Id entre chaves. 
 app.delete('/sftp/:id', (req, res) => {
   let {id} = req.params;
-  let index = buscaUsuario(id);
-  sftp.splice(index, 1);
+  let index = buscaUsuario(id); 
+  sftp.splice(index, 1); // metodo splice passa dois parametros posição de inicio e elemento a ser deletado 
   res.send(`Usuario ${id} removido com sucesso`);
 })
 
 //criação da função buscaUsuario passando um parametro id 
 //esta função vai retornar a posição do id dentro do array
 function buscaUsuario(id) {
-  return sftp.findIndex(usuario => usuario.id == id) //findIndex método que temos para manipular array - passando algum parâmetro eu localizo: em que índice, em que posição está o elemento que quero alterar, manipular ou visualizar.
+  return sftp.findIndex(usuario => usuario.id == id) //findIndex método que temos para manipular array - passando algum parâmetro eu localizo, em que índice, em que posição está o elemento que quero alterar, manipular ou visualizar.
 }
 
-export default app
+export default app                                      
