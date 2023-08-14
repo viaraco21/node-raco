@@ -5,10 +5,10 @@ import SftpController from "../controllers/sftpController.js";
 const router = express.Router();
 
 router
-  .get("/sftp", SftpController.listarSftp)
-  .get("/sftp/:id", SftpController.listarSftpPorId)
-  .post("/sftp", SftpController.cadastrarSftp)
-  .put("/sftp/:id", SftpController.atualizarSftp)
-  .delete("/sftp/id", SftpController.excluirSftp)
+  .get("/usuario", SftpController.listarUsuario)
+  .get("/usuario/:id", SftpController.listarUsuarioPorId)
+  .post("/usuario", SftpController.cadastrarUsuario)
+  .put("/usuario/:id", SftpController.atualizarUsuario)
+  .delete("/usuario/id", SftpController.excluirUsuario)
 
 export default router;

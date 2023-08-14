@@ -5,13 +5,13 @@ import sftp from "../models/Sftp.js";
 
 class SftpController {
 
-  static listarSftp = (req, res) => {
+  static listarUsuario = (req, res) => {
     sftp.find((err, sftp) => {
       res.status(200).json(sftp)
     })
   }
 
-  static listarSftpPorId = (req, res) => {
+  static listarUsuarioPorId = (req, res) => {
     const id = req.params.id;
 
     sftp.findById(id, (err, sftp) => {
@@ -23,7 +23,7 @@ class SftpController {
     })
   }
 
-  static cadastrarSftp = (req, res) => {
+  static cadastrarUsuario = (req, res) => {
     let sftp1 = new sftp(req.body);
 
     sftp1.save((err) => {
@@ -37,7 +37,7 @@ class SftpController {
   }
 
 
-  static atualizarSftp = (req, res) => {
+  static atualizarUsuario = (req, res) => {
     const id = req.params.id;
 
     sftp.findByIdAndUpdate(id, { $set: req.body }, (err) => {
@@ -49,7 +49,7 @@ class SftpController {
     })
   }
 
-  static excluirSftp = (req, res) => {
+  static excluirUsuario = (req, res) => {
     const id = req.params.id;
 
     sftp.findByIdAndDelete (id, (err) => {
