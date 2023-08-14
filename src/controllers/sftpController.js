@@ -1,4 +1,5 @@
-//padrão de projeto controller, ele é o intermediário entre o que vem de requisição: recebe e devolve as respostas.
+//padrão de projeto controller, ele é o intermediário entre o que vem de requisição: 
+//recebe e devolve as respostas.
 
 import sftp from "../models/Sftp.js";
 
@@ -51,7 +52,7 @@ class SftpController {
   static excluirSftp = (req, res) => {
     const id = req.params.id;
 
-    sftp.findByIdAndDelete(id, (err) => {
+    sftp.findByIdAndDelete (id, (err) => {
       if (!err) {
         res.status(200).send({ message: 'Usuário removido com sucesso' })
       } else {
