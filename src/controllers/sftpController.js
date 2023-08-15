@@ -3,8 +3,9 @@
 
 import sftp from "../models/Sftp.js";
 
+//declarção dos metodos
 class SftpController {
-
+//métodos no tipo estático, não precisam instanciar essa classe.
   static listarUsuario = (req, res) => {
     sftp.find((err, sftp) => {
       res.status(200).json(sftp)
@@ -25,7 +26,7 @@ class SftpController {
 
   static cadastrarUsuario = (req, res) => {
     let sftp1 = new sftp(req.body);
-
+//persistir os dados no banco
     sftp1.save((err) => {
 
       if (err) {
