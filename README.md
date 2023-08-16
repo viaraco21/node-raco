@@ -1,1 +1,1 @@
-Criação de um sftp para manutenção de usuários
+Criação do sftp para manutenção de usuários
