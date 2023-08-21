@@ -49,3 +49,5 @@ comando para entrar no sftp
 
 minikube ssh 
 comando para entrar no volume
+
+Criar os services accounts
