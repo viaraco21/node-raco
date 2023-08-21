@@ -33,10 +33,19 @@ Feito
 
 Passo 4. Testar a aplicação. 
 O SFTP estará escutando a porta 22 (sftp-local-service)
-e o aplicativo de manutenção de usuários estará escutando na porta 4000 (sftp-users-app)
+e o aplicativo de manutenção de usuários estará escutando na porta 6000 (sftp-users-app)
 
 Utilizar um Docker para testar com imagem Node
 docker run -it -p 8080:6000 -v "/Totvs/Docker/node-raco:/var/www" node bash
 
 para executar
 npm run dev
+
+k -n sftp-local port-forward sftp-local-9b9c86785-9k6zx 3003:22
+comando para fazer a coneão
+
+sftp -P 3003 bar@localhost  
+comando para entrar no sftp
+
+minikube ssh 
+comando para entrar no volume
